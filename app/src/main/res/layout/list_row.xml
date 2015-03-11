@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffe4d8"
+    android:padding="8dp">
+
+    <!-- Avatar Image -->
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/avatarImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:adjustViewBounds="true"
+        android:gravity="center"
+        android:scaleType="centerInside"
+       />
+
+
+    <!-- Post Title -->
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/avatarImageView"
+        android:layout_toRightOf="@+id/avatarImageView"
+        android:gravity="center_vertical|left"
+        android:text="Title" />
+
+    <!-- Post Description -->
+    <TextView
+        android:id="@+id/txtDescription"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtTitle"
+        android:layout_toRightOf="@+id/avatarImageView"
+        android:gravity="center_vertical|left"
+        android:text="Description" />
+
+
+</RelativeLayout>
