@@ -57,4 +57,5 @@ public class FeedReaderDetails extends Activity {
         recyclerView.setAdapter(adapter);
     }
 
+
 }

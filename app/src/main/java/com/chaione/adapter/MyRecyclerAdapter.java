@@ -11,7 +11,6 @@ import com.chaione.FeedListRowHolder;
 import com.chaione.util.RequestHandler;
 import com.example.synerzip.chaioneapp.R;
 
-
 import java.util.List;
 
 /**

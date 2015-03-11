@@ -111,9 +111,9 @@ public class FeedReader extends Activity implements SwipeRefreshLayout.OnRefresh
         swipeView = (SwipeRefreshLayout) findViewById(R.id.swipe);
         btnNext = (Button) findViewById(R.id.btnNext);
         swipeView.setOnRefreshListener(this);
-        Realm.deleteRealmFile(this);
-        realm = Realm.getInstance(this);
 
+        // Realm.deleteRealmFile(this);
+        realm = Realm.getInstance(this);
         // Instantiate the ConnectionDetector.
         conn = new ConnectionDetector(getApplicationContext());
 
@@ -131,16 +131,16 @@ public class FeedReader extends Activity implements SwipeRefreshLayout.OnRefresh
             RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
         } else {
 
-            realm.beginTransaction();
+            //  realm.beginTransaction();
             RealmResults<Data> resultDataMain = realm.allObjects(Data.class);
 
             List<Data> dataList = new ArrayList<Data>();
             for (int i = 0; i < resultDataMain.size(); i++) {
-
+                realm.beginTransaction();
                 dataList.add(resultDataMain.get(i));
-
+                realm.commitTransaction();
             }
-realm.commitTransaction();
+            //realm.commitTransaction();
             adapter = new MyRecyclerAdapter(FeedReader.this, dataList);
 
             recyclerView.setAdapter(adapter);
@@ -206,9 +206,14 @@ realm.commitTransaction();
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
-
         realm.close();
     }
 
@@ -263,5 +268,10 @@ realm.commitTransaction();
         }, 3000);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
 
+        finish();
+    }
 }
